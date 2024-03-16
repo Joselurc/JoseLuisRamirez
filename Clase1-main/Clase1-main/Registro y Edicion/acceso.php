@@ -1,14 +1,14 @@
 <?php 
-session_start();
-session_destroy();?>
+//session_start();
+//session_destroy();?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Documento sin título</title>
-<link rel="stylesheet"  href="css/acceso.css">  
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="js/sweetalert.min.js"></script>
+<link rel="stylesheet"  href="../css/acceso.css">  
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
 </head>
 <body>
 <form action="<?php echo htmlspecialchars('sesion.php');?>" method="post">

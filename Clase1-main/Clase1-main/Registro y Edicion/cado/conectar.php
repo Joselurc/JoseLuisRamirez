@@ -3,7 +3,7 @@ class cado{
 	function conectar(){
 		try{
 			//date_default_timezone_set('America/Lima');
-			$db=new PDO('mysql:host=localhost;dbname=instituto_sise','root','12345678');//se crea lka cadena de conexion
+			$db=new PDO('mysql:host=localhost;dbname=login','root','12345678');//se crea lka cadena de conexion
 			$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);//se comprueba q no haya errores
 			return $db;
 		}

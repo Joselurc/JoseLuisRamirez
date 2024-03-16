@@ -1,10 +1,10 @@
 <script src="js/sweetalert.min.js"></script>
 <?php
 session_start();
-if(!isset($_SESSION["Nombres"])) {
+if(!isset($_SESSION["Usuario"])) {
 	header('Location: index.php');
 }
-if(!isset($_SESSION["Dni"])) {
+if(!isset($_SESSION["txtUsuario"])) {
 	header('Location: index.php');
 }
 include('cado/clase_usuario.php');//se llama al archivo de clase_usuario.php
@@ -13,18 +13,16 @@ $user=$clave="";
 $user=validar($_POST["txtUsuario"]);
 
 $clave=validar($_POST["txtClave"]);
-
+echo $clave;
 $objUsuario=new Usuario();//se llama a la clase usuario
-
 $validar=$objUsuario->iniciarSesion($user,md5($clave));
 $sesion=$validar->fetch();
 
 $_SESSION["id"]=$sesion[0];
-$_SESSION["Nombres"]=$sesion[1];
-$_SESSION["Apellidos"]=$sesion[2];
-$_SESSION["Dni"]=$sesion[3];
-$_SESSION["Codigo"]=$sesion[4];
-
+$_SESSION["Usuario"]=$sesion[1];
+$_SESSION["Clave"]=$sesion[2];
+$_SESSION["Grupo"]=$sesion[5];
+$_SESSION["Estado"]=$sesion[7];
 
 if(empty($user)){
 	?>
@@ -52,8 +50,20 @@ elseif(empty($clave)){
 	}
 	
 if(!empty($sesion)){
-		header('Location: usuario.php');		
-
+			
+      if ($_SESSION["Estado"] == "0"){
+		  header('Location: usuario.php');
+	  }
+	else{
+		?>	
+		<script>
+		
+		alert("El usuario está inactivo");
+		window.location.href="index.php";
+		
+		</script>
+		<?php
+	}
 	}
 					else
 					{	
